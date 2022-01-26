@@ -1,0 +1,9 @@
+﻿@*Note: Blazor gives more importance to the attributes defined at the right.*@
+<div>
+    <input type="text" placeholder="Default placeholder" style="border: 2px solid red;" @attributes=AdditionalAttributes />
+</div>
+
+@code {
+    [Parameter(CaptureUnmatchedValues = true)]
+    public IDictionary<string, object> AdditionalAttributes { get; set; }
+}

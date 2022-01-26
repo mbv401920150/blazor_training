@@ -1,0 +1,21 @@
+﻿@typeparam T
+@if (ElementList == null)
+{
+    <text>List is null.</text>
+}
+else
+{
+    <div style="width: 50%; border: 1px solid; margin-left: 20px; padding: 5px; border-radius: 10px; background-color: #6f42c133">
+        @foreach (var item in ElementList)
+        {
+            @RenderElement(item);
+        }
+    </div>
+}
+
+@code {
+    [Parameter]
+    public RenderFragment<T> RenderElement { get; set; }
+    [Parameter]
+    public List<T> ElementList { get; set; }
+}

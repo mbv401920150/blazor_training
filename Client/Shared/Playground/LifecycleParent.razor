@@ -1,0 +1,40 @@
+﻿
+<p>
+    <input type="button" value="Load all items" @onclick="LoadAllItems" />
+    <input type="button" value="Delete all items" @onclick="DeleteAllItems" />
+    <input type="button" value="Add new item" @onclick="AddNewItem"/>
+</p>
+
+<LifecycleChild ElementsList=@ElementsList HandleRemoveItem=RemoveItem />
+
+@code {
+    private List<string> ElementsList = null;
+
+    protected override void OnInitialized()
+    {
+        LoadAllItems();
+    }
+
+    void LoadAllItems()
+    {
+        ElementsList = new List<string>();
+
+        for (int x = 1; x < 10; x++)
+            ElementsList.Add($"Item #{x}");
+    }
+
+    void DeleteAllItems()
+    {
+        ElementsList.Clear();
+    }
+
+    void AddNewItem()
+    {
+        ElementsList.Add($"Item @{DateTime.Now.ToString("ffffff")}");
+    }
+
+    void RemoveItem(string item)
+    {
+        ElementsList.Remove(item);
+    }
+}

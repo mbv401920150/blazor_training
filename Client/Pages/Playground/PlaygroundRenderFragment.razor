@@ -1,0 +1,49 @@
+﻿@page "/playground/renderFragment"
+@using blazor_training.Client.Shared.Playground
+
+<h1>RenderFragment examples</h1>
+
+<Container>
+    @*RenderFragment - ChildContent*@
+    <SplitSection Name="ChildContent"
+                  Description="Example how works the <code>RenderFragment <b>=></b> ChildContent</code> parameter."
+                  Note="The <code>ChildContent</code> is explicit, and should be define as Parameter into the child component." />
+    <RenderFragmentChildContent />
+    <RenderFragmentChildContent>
+        <div>
+            Content with styles: <b>Bold</b>, <i>Italic</i>.
+            <br />
+            <img title="Click the image!"
+                 alt="blazor logo"
+                 width="64"
+                 onclick="alert('JS Alert')"
+                 src="https://devblogs.microsoft.com/dotnet/wp-content/uploads/sites/16/2019/04/BrandBlazor_nohalo_1000x.png" />
+        </div>
+    </RenderFragmentChildContent>
+
+    @*RenderFragment - Multiples*@
+    <SplitSection Name="Multiples fragments"
+                  Description="Example how works multiples RenderFragment parameters."
+                  Note="You can use multiples <code>RenderFragment</code> into the same component. If you use multiples fragments, you must define explicit the <code>ChildContent</code> Fragment." />
+
+    @*WITHOUT FRAGMENT CHILDREN*@
+    <RenderFragmentMultiple />
+
+    @*WITH MULTIPLE FRAGMENTS*@
+    <RenderFragmentMultiple>
+        <Fragment1>
+            <textarea placeholder="Fragment 1" />
+        </Fragment1>
+        <Fragment2>
+            <input type="text" placeholder="Fragment 2" />
+            <input type="button" value="Submit" />
+        </Fragment2>
+    </RenderFragmentMultiple>
+
+    @*RenderFragment - Generic*@
+    <SplitSection Name="Generics"
+                  Description="Example how to use a <code>RenderFragment</code> with an specific Data type (Class), based on the <code>Context</code>."
+                  Note="In the example also it's replace the Initialize event of the component." />
+
+    <RenderFragmentGenericParent />
+</Container>

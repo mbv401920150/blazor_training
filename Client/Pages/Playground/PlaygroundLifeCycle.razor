@@ -1,0 +1,30 @@
+﻿@page "/playground/lifecycle"
+@using blazor_training.Client.Shared.Playground
+
+<h1>Component lifecycle</h1>
+
+<Container>
+
+    @*Component lifecycle*@
+    <SplitSection Name="Basics"
+                  Description="Check all lifecycle events that we could use and their functionallity." />
+    <p>
+        For all methods you must use <code>protected override</code>, because you need to override a method already defined by Blazor.
+    </p>
+    <ul>
+        <li>
+            <code>OnInitialized</code>, <code>OnInitializedAsync</code>: Event that runs one-time at the creation of the component.
+        </li>
+        <li>
+            <code>OnParametersSet</code>, <code>OnParametersSetAsync</code>: Event that runs every time that any parameters changed.
+        </li>
+        <li>
+            <code>OnAfterRender</code>, <code>OnAfterRenderAsync</code>: Event that will execute after the render of the component was done (runs every time that the component re-render).
+        </li>
+        <li>
+            <code>ShouldRender</code>: Event that handle optional additional renders.
+        </li>
+    </ul>
+
+    <LifecycleParent />
+</Container>

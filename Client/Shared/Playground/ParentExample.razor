@@ -1,0 +1,38 @@
+﻿<p>
+    <input type="button" @onclick="LoadList" value="Load list" />
+    <input type="button" @onclick="@(() => ListItems.Clear())" value="Clear list" />
+</p>
+
+@if (ListItems != null && ListItems.Count > 0)
+{
+    <p>
+        List of values:
+        <ul>
+            @foreach (var item in ListItems)
+            {
+                <ChildExample ItemValue="@item" RemoveItem="RemoveItem" />
+            }
+        </ul>
+    </p>
+}
+else
+{
+    <p>There is no items to display</p>
+}
+
+@code {
+    List<string> ListItems = new List<string>();
+
+    void LoadList()
+    {
+        ListItems = new List<string>();
+
+        for (int x = 1; x < 10; x++)
+            ListItems.Add($"Item #{x}");
+    }
+
+    void RemoveItem(string item)
+    {
+        ListItems.Remove(item);
+    }
+}

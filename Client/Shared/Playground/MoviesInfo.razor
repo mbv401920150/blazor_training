@@ -1,0 +1,35 @@
+﻿<h4>Movies info</h4>
+@if (Loading)
+{
+    <img alt="loading" style="width: 96px" src="https://i.giphy.com/media/q15kbCtGFqwx8wYx1n/giphy.webp" />
+}
+else if (ListMovies == null || ListMovies.Count == 0)
+{
+    <span 
+        style="padding: 5px 10px; 
+            font-weight: bold;
+            border: 1px solid red; 
+            border-radius: 10px; 
+            background-color: #f56565; 
+            color: white">
+        There is no movies to display
+    </span>
+}
+else
+{
+    @foreach (var movie in ListMovies)
+    {
+        <p>
+            <div><b>Name:</b> @movie.Title</div>
+            <div><b>Release date:</b> @movie.Released.ToString("d")</div>
+        </p>
+    }
+}
+
+@code {
+    [Parameter]
+    public List<Movie> ListMovies { get; set; }
+
+    [Parameter]
+    public bool Loading { get; set; }
+}

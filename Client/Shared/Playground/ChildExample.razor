@@ -1,0 +1,12 @@
+﻿
+<li>
+    <b>@ItemValue</b>
+    <input type="button" value="Remove" @onclick="@(() => RemoveItem.InvokeAsync(ItemValue))" />
+</li>
+
+@code {
+    [Parameter]
+    public string ItemValue { get; set; }
+    [Parameter]
+    public EventCallback<string> RemoveItem { get; set; }
+}

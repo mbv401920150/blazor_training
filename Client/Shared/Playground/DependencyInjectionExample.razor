@@ -1,0 +1,34 @@
+﻿@using blazor_training.Client.Services
+@inject ServiceExampleSingleton singleton
+@inject ServiceExampleTransient transient
+
+<div>
+    <p>
+        Counter of the component:  @Counter
+    </p>
+    <p>
+        Counter Singleton (Single instance in the client): @singleton.Value
+    </p>
+    <p>
+        Counter Transient (Exists only when the component exists): @transient.Value
+    </p>
+    <div>
+        <input type="button" value="Sum +1" @onclick="Sum" />
+    </div>
+</div>
+
+@code {
+    public int Counter { get; set; }
+
+    protected override void OnInitialized()
+    {
+        Counter = 0;
+    }
+
+    void Sum()
+    {
+        Counter += 1;
+        singleton.Value += 1;
+        transient.Value += 1;
+    }
+}

@@ -1,0 +1,53 @@
+﻿
+<h4>Movies</h4>
+<RenderFragmentGenericList ElementList="Movies">
+    <RenderElement Context="movie">
+        <p>
+            <div><b>Titulo</b>: @movie.Title</div>
+            <div><b>Released</b>: @movie.Released</div>
+        </p>
+    </RenderElement>
+</RenderFragmentGenericList>
+<br/>
+<h4>Games</h4>
+<RenderFragmentGenericList ElementList="Games">
+    <RenderElement Context="game">
+        <p>
+            <div><b>Name</b>: @game.Name</div>
+            <div><b>Publish year</b>: @game.PublishYear</div>
+            <div><b>Console</b>: @game.Console</div>
+        </p>
+    </RenderElement>
+</RenderFragmentGenericList>
+
+@code {
+    /// <summary> On initialize the component </summary>
+    protected override void OnInitialized()
+    {
+        Movies = LoadMovies();
+        Games = LoadGames();
+    }
+
+    private List<Movie> Movies;
+    private List<Game> Games;
+
+    private List<Movie> LoadMovies()
+    {
+        List<Movie> ListOfMovies = new List<Movie>();
+        ListOfMovies.Add(new Movie { Title = "The Wizard of Oz", Released = new DateTime(1939, 8, 25) });
+        ListOfMovies.Add(new Movie { Title = "King Kong", Released = new DateTime(1933, 4, 7) });
+        ListOfMovies.Add(new Movie { Title = "Pycho", Released = new DateTime(1960, 9, 8) });
+
+        return ListOfMovies;
+    }
+
+    private List<Game> LoadGames()
+    {
+        List<Game> ListOfGames = new List<Game>();
+        ListOfGames.Add(new Game { Name = "Super Mario Bros", PublishYear = 1986, Console = "Nintendo" });
+        ListOfGames.Add(new Game { Name = "Donkey Kong Country 1", PublishYear = 1994, Console = "Super Nintendo" });
+        ListOfGames.Add(new Game { Name = "Zelda: The Ocarina of Time", PublishYear = 1998, Console = "Nintendo 64" });
+
+        return ListOfGames;
+    }
+}

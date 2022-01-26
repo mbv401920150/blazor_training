@@ -1,0 +1,13 @@
+﻿@page "/playground/parentChild"
+@using blazor_training.Client.Shared.Playground
+
+<h1>Parent-Child examples</h1>
+
+<Container>
+
+    @*Parent-Child callbacks*@
+    <SplitSection Name="Basic interaction"
+                  Description="Example how to remove an item from a list."
+                  Note="The example use <code>EventCallback</code> and <code>InvokeAsync</code> method to interact between the components." />
+    <ParentExample />
+</Container>

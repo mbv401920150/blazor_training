@@ -1,0 +1,60 @@
+﻿@using System.Text
+
+<h5>Log:</h5>
+<textarea readonly="true" style="font-family: consolas; width: 500px; height: 160px">@String.Join("\r\n", logs)</textarea>
+
+<p>
+    @foreach (var item in ElementsList)
+    {
+        <div>
+            <div>@item <input type="button" value="Remove" @onclick="@(() => HandleRemoveItem.InvokeAsync(item))" /></div>
+        </div>
+    }
+</p>
+
+@code {
+    [Parameter]
+    public List<string> ElementsList { get; set; }
+    [Parameter]
+    public EventCallback<string> HandleRemoveItem { get; set; }
+
+    private List<string> logs = new List<string>();
+
+    void AddToLog(string log)
+    {
+        if (logs.Count > 5)
+            logs.RemoveAt(0);
+        logs.Add(log);
+    }
+
+    protected override void OnInitialized()
+    {
+        string log = $"OnInitialized - Elements: {ElementsList.Count}";
+        Console.WriteLine(log);
+        AddToLog(log);
+    }
+
+    protected override void OnParametersSet()
+    {
+        string log = $"OnParametersSet - Elements: {ElementsList.Count}";
+        Console.WriteLine(log);
+        AddToLog(log);
+    }
+
+    protected override void OnAfterRender(bool firstRender)
+    {
+        string log = $"OnAfterRender - FirstRender? {firstRender} - Elements: {ElementsList.Count}";
+        Console.WriteLine(log);
+        AddToLog(log);
+    }
+
+    protected override bool ShouldRender()
+    {
+        bool shouldRender = true;
+        string log = $"ShouldRender - ShouldRender? {shouldRender} - Elements: {ElementsList.Count}";
+        Console.WriteLine(log);
+        AddToLog(log);
+
+        return shouldRender;
+    }
+}

@@ -1,0 +1,24 @@
+﻿<p>
+    <input type="text" @bind="TextBoxValue" />
+    <input type="button" value="Write in console" @onclick="ConsoleLog" />
+    <br/>
+
+    <label for="checkBox">
+        Is valid?
+    </label>
+    <input id="checkBox" type="checkbox" @bind="CheckBoxValue" />
+
+    <div>
+        Current textbox value: <code> @TextBoxValue</code> and the checkbox is: <code>@CheckBoxValue</code>.
+    </div>
+</p>
+
+@code {
+    private string TextBoxValue { get; set; } = "Default value";
+    private bool CheckBoxValue { get; set; } = true;
+
+    private void ConsoleLog()
+    {
+        Console.WriteLine(TextBoxValue);
+    }
+}

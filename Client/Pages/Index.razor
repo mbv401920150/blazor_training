@@ -1,9 +1,30 @@
 ﻿@page "/"
 
-<PageTitle>Index</PageTitle>
+@* Implicit syntax *@
+<p>Hi, @name.extToUpper()</p>
 
-<h1>Hello, world!</h1>
+@* Explicit syntax *@
+<p>2 + 4 = @(2 + 4)</p>
 
-Welcome to your new app.
 
-<SurveyPrompt Title="How is Blazor working for you?" />
+<button @onclick="@handleClick">Test</button>
+
+@code {
+    string name = "Michael Bolanos Vargas";
+
+    private Movie getMovie()
+    {
+        return new Movie()
+            {
+                Title = "TEST",
+                Released = DateTime.Now
+            };
+    }
+
+
+    private void handleClick()
+    {
+
+        Console.WriteLine("TEST");
+    }
+}

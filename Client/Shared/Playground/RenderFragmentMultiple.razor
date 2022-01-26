@@ -1,0 +1,29 @@
+﻿<p style="border: 1px solid; padding: 5px; border-radius: 10px; background-color: #6f42c133">
+    <div>
+        @if (@Fragment1 == null)
+        {
+            <text>The parameter <code>Fragment1</code> is null.</text>
+        }
+        else
+        {
+            @Fragment1
+        }
+    </div>
+    <div>
+        @if (@Fragment2 == null)
+        {
+            <text>The parameter <code>Fragment2</code> is null.</text>
+        }
+        else
+        {
+            @Fragment2
+        }
+    </div>
+</p>
+
+@code {
+    [Parameter]
+    public RenderFragment Fragment1 { get; set; }
+    [Parameter]
+    public RenderFragment Fragment2 { get; set; }
+}

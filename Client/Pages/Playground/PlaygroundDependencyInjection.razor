@@ -1,0 +1,16 @@
+﻿@page "/playground/dependencyInjection"
+@using blazor_training.Client.Shared.Playground
+
+<h1>Dependency Injection</h1>
+
+<Container>
+
+    @*Dependency Injection*@
+    <SplitSection 
+        Name="Basic"
+        Description="Check all lifecycle events that we could use and their functionallity."
+        Note="Check the <code>Program.cs</code> in the <code>Client</code> Project. Also check the files in the folder <code>Services</code>" 
+    />
+
+    <DependencyInjectionExample />
+</Container>

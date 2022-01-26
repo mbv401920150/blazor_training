@@ -1,0 +1,29 @@
+﻿@page "/playground/Basics"
+@using blazor_training.Client.Shared.Playground
+
+<h1>Basics</h1>
+
+<Container>
+    @*Component example*@
+    <SplitSection 
+        Name="Component example & using of MarkupString"
+        Description="Simple component with parameters. <br/>
+            It use the <b>'MarkupString'</b> to convert string as HTML code."
+        Note="The component use 3 parameters. <code>Name</code>, <code>Description</code> and <code>Note</code>."
+    />
+
+    @*For each example*@
+    <SplitSection Name="For each & If example" Description="For each cycle example. Sending a object array as parameter. Checking if the list items are 0 or null" />
+    <Movies/>
+
+    @*Arbitrary attributes*@
+    <SplitSection
+        Name="Arbitrary attributes"
+        Description="Example how to send multiples attributes (parameters) without match in the component."
+        Note= "Blazor gives more importance to the attributes defined at the right (Check the <code>placeholder</code> attribute in the child component)."
+    />
+
+    <ArbitraryAttributes placeholder="Type your name" style="border: 2px solid blue; margin-bottom: 10px" />
+    <ArbitraryAttributes />
+
+</Container>

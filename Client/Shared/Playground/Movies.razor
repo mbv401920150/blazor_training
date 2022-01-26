@@ -1,0 +1,35 @@
+﻿<button @onclick="LoadMovies">
+    Load movies
+</button>
+<button @onclick="ClearMovies">
+    Remove all movies
+</button>
+<div style="margin: 10px 0 10px 30px">
+
+<MoviesInfo ListMovies=@ListOfMovies Loading=@Loading />
+</div>
+
+@code {
+    private List<Movie> ListOfMovies = null;
+    private bool Loading = false;
+
+    private async void LoadMovies()
+    {
+        Loading = true;
+
+        //await Task.Delay(3);
+
+        // Avoid duplicate for each execution
+        ListOfMovies = new List<Movie>();
+        ListOfMovies.Add(new Movie { Title = "The Wizard of Oz", Released = new DateTime(1939, 8, 25) });
+        ListOfMovies.Add(new Movie { Title = "King Kong", Released = new DateTime(1933, 4, 7) });
+        ListOfMovies.Add(new Movie { Title = "Pycho", Released = new DateTime(1960, 9, 8) });
+
+        Loading = false;
+    }
+
+    private void ClearMovies()
+    {
+        ListOfMovies = new List<Movie>();
+    }
+}
